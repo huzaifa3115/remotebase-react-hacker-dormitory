@@ -17,12 +17,10 @@ function Search({ data = [], onError = () => {}, onSetList = () => {} }) {
   const [joiningDate, setDate] = useState("");
 
   const onCheckStudenName = () => {
-    if (studentName === "" || joiningDate === "") return;
-
     const result = data.filter((item) => {
-      return item.name.toLowerCase().includes(studentName.toLowerCase());
+      return item.name.toLowerCase() === studentName.toLowerCase();
     })[0];
-
+		
     if (!result)
       return onError(`Sorry, ${studentName} is not a verified student!`);
 
